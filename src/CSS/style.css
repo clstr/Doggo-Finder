@@ -1,0 +1,1939 @@
+﻿
+
+.react-datepicker__input-container {
+    position: relative;
+    display: inline-block;
+    width: 115px;
+}
+
+.legend {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ReactVirtualized__Table {
+    display: inline-block;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.ReactVirtualized__Table__headerColumn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+}
+
+.ReactVirtualized__Table__headerTruncatedText {
+    flex: auto;
+}
+
+.DragHandle {
+    flex: 0 0 16px;
+    z-index: 2;
+    cursor: col-resize;
+    color: #0085ff;
+}
+
+    .DragHandle:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+.DragHandleActive,
+.DragHandleActive:hover {
+    color: #0b6fcc;
+    z-index: 3;
+}
+
+.DragHandleIcon {
+    flex: 0 0 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headercontainer {
+    margin: 0 auto;
+    padding-left: 15px;
+}
+
+html {
+    font-family: verdana, arial, sans-serif;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e4e3de;
+    height: 100%;
+}
+
+.bodyarea {
+    vertical-align: top;
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.tabarea {
+    vertical-align: top;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.appBarArea {
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 25px;
+}
+
+img {
+    border: 0 none;
+    max-width: 100% !important;
+    height: auto;
+}
+
+    img a {
+        border: 0 none;
+        text-decoration: none;
+    }
+
+.clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    border: 1px solid #ecb731;
+    padding: 5px 5px 5px 5px;
+    margin: auto;
+    vertical-align: top;
+}
+
+legend {
+    color: #005639;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 0 10px 10px 10px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: auto;
+    border-bottom: none;
+}
+
+.nobreak {
+    white-space: nowrap;
+}
+
+.logoff {
+    width: 50px;
+}
+
+.logofflink {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    background-color: #eea421;
+    padding: 3px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 8pt;
+}
+
+    .logofflink:hover {
+        color: #006859;
+    }
+
+.headercontent {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 70px;
+}
+
+    .headercontent .left {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        height: 70px;
+        width: 99%;
+    }
+
+    .headercontent .right {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        height: 70px;
+        text-align: right;
+        width: 70%;
+    }
+
+.footercontent {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.closebuttoncontent {
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    padding: 17px 0 40px 0;
+}
+
+    .closebuttoncontent .left {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        width: 85%;
+        text-align: left;
+    }
+
+    .closebuttoncontent .right {
+        float: left;
+        margin: 0;
+        padding: 0 5px 0 0;
+        vertical-align: middle;
+        width: 15%;
+    }
+
+.addbuttoncontent {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+/* form buttons padding */
+/*.btn-primary {
+    padding: 5px 1.5em .5px 1.5em;
+    border-color: #269abc;
+    color: #fff;
+}*/
+
+/* image links after a student logs in */
+.primaryloginlinks {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+    .primaryloginlinks .primary1 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #046393;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginlinks .primary2 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #027ab7;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginlinks .primary3 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #eea421;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginlinks .primary4 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #ffc20f;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginlinks .primary1 a,
+    .primary2 a,
+    .primary3 a,
+    .primary4 a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+        .primary1 a:hover,
+        .primary2 a:hover,
+        .primary3 a:hover,
+        .primary4 a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+.primaryimage {
+    visibility: hidden;
+    display: none;
+}
+
+/* green buttons underneath the images after login */
+.primaryloginbuttons {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+    .primaryloginbuttons .row1 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #04937f;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginbuttons .row2 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #006859;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginbuttons .row3 {
+        font-size: 10pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #02483e;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .primaryloginbuttons .row1 a,
+    .row2 a,
+    .row3 a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+        .row1 a:hover,
+        .row2 a:hover,
+        .row3 a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+/* grey buttons found above links before login */
+.preloginbuttons {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+    .preloginbuttons .row1 {
+        font-size: 9pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #6e6d69;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .preloginbuttons .row2 {
+        font-size: 9pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #85847f;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .preloginbuttons .row3 {
+        font-size: 9pt;
+        color: #fff;
+        font-weight: bold;
+        background-color: #9d9c97;
+        padding: 10px 5px 10px 5px;
+    }
+
+    .preloginbuttons .row1 a,
+    .row2 a,
+    .row3 a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+        .row1 a:hover,
+        .row2 a:hover,
+        .row3 a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+/* sets up the rows to use in the grids found in the page breaks */
+* {
+    box-sizing: border-box;
+}
+
+.row:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 5px;
+}
+
+[class*="col8-"] {
+    float: left;
+    padding: 5px 10px 0 10px;
+}
+
+[class*="col10-"] {
+    float: left;
+    padding: 5px 10px 0 10px;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+.visible-t,
+.visible-c {
+    display: none !important;
+}
+
+.visible-t-block,
+.visible-t-inline,
+.visible-t-inline-block,
+.visible-c-block,
+.visible-c-inline,
+.visible-c-inline-block {
+    display: none !important;
+}
+
+.afterlogin {
+    height: 25px;
+    width: auto;
+}
+
+.smallloginlinks {
+    text-align: center;
+    padding: 5px 0 10px 0;
+    font-size: 8pt;
+}
+
+    .smallloginlinks .small {
+        font-size: 7pt;
+        color: #999;
+        font-weight: bold;
+    }
+
+.smallloginlinks10 {
+    text-align: center;
+    padding: 5px 0 10px 0;
+    font-size: 8pt;
+}
+
+    .smallloginlinks10 .small {
+        font-size: 7pt;
+        color: #999;
+        font-weight: bold;
+    }
+
+/* ***************************************************************************************************************************************** */
+/* ************************************** Page layout break points ************************************************************************* */
+/* ***************************************************************************************************************************************** */
+
+/* ######################## Phones ######################## */
+.header-top {
+    height: 20px;
+    width: 100%;
+    background-color: #006859;
+    padding: 0;
+    margin: 0;
+}
+
+.header-background {
+    height: 85px;
+    width: 100%;
+    background-color: #04937f;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding-left: 15px;
+    max-width: 100%;
+    min-height: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+}
+
+.bodycontent {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 100%;
+    min-height: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    background-color: #fff;
+}
+
+.footer {
+    height: 75px;
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    background-color: #006859;
+    color: #fff;
+    font-size: 7pt;
+}
+
+.footercontent .left {
+    float: left;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 65%;
+}
+
+.footercontent .right {
+    float: left;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    text-align: right;
+    width: 35%;
+}
+
+.footerbig {
+    visibility: hidden;
+    display: none;
+}
+
+.footersmall {
+    visibility: visible;
+    display: inherit;
+}
+
+.socialmedia {
+    width: 20px;
+    height: 20px;
+}
+
+.smalllogo {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    margin-left: 10px;
+}
+
+.logo {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.banner {
+    visibility: hidden;
+}
+
+h1 {
+    font-size: 18px;
+    color: #637a95;
+}
+/* blue page title */
+h2 {
+    font-size: 16px;
+    color: #006859;
+}
+/* green page sub header */
+h3 {
+    font-size: 14px;
+    color: #000;
+}
+/* black page header */
+h4 {
+    font-size: 12px;
+    color: #000;
+}
+
+h5 {
+    font-size: 7pt;
+    color: #999;
+    margin: 0;
+}
+/* login link headers*/
+h6 {
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+}
+/* white page header */
+
+.bigtitle {
+    font-size: 18px;
+    color: #637a95;
+    font-weight: bold;
+    margin-left: 175px;
+    padding-top: 10px;
+}
+
+.smalltitle {
+    color: white;
+    margin-left: 15px;
+    padding-top: 15px;
+    font-size: 16px;
+}
+
+.appointmenttitle {
+    font-size: 12px;
+    color: #006859;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+/* 12 column grid */
+.col-p-1 {
+    width: 8.33%;
+}
+
+.col-p-2 {
+    width: 16.66%;
+}
+
+.col-p-3 {
+    width: 25%;
+}
+
+.col-p-4 {
+    width: 33.33%;
+}
+
+.col-p-5 {
+    width: 41.66%;
+}
+
+.col-p-6 {
+    width: 50%;
+}
+
+.col-p-7 {
+    width: 58.33%;
+}
+
+.col-p-8 {
+    width: 66.66%;
+}
+
+.col-p-9 {
+    width: 75%;
+}
+
+.col-p-10 {
+    width: 83.33%;
+}
+
+.col-p-11 {
+    width: 91.66%;
+}
+
+.col-p-12 {
+    width: 100%;
+}
+
+/* 10 column grid */
+.col10-p-1 {
+    width: 10%;
+}
+
+.col10-p-2 {
+    width: 20%;
+}
+
+.col10-p-3 {
+    width: 30%;
+}
+
+.col10-p-4 {
+    width: 40%;
+}
+
+.col10-p-5 {
+    width: 50%;
+}
+
+.col10-p-6 {
+    width: 60%;
+}
+
+.col10-p-7 {
+    width: 70%;
+}
+
+.col10-p-8 {
+    width: 80%;
+}
+
+.col10-p-9 {
+    width: 90%;
+}
+
+.col10-p-10 {
+    width: 100%;
+}
+
+/* 8 column grid */
+.col8-p-1 {
+    width: 12.5%;
+}
+
+.col8-p-2 {
+    width: 25%;
+}
+
+.col8-p-3 {
+    width: 37.5%;
+}
+
+.col8-p-4 {
+    width: 50%;
+}
+
+.col8-p-5 {
+    width: 62.5%;
+}
+
+.col8-p-6 {
+    width: 75%;
+}
+
+.col8-p-7 {
+    width: 87.5%;
+}
+
+.col8-p-8 {
+    width: 100%;
+}
+
+.welcome {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 25px;
+    padding: 0 10px 0 0;
+}
+
+.loginlinks {
+    text-align: left;
+    padding: 5px 0 10px 0;
+    font-size: 10pt;
+}
+
+    .loginlinks .description {
+        visibility: hidden;
+        display: none;
+    }
+
+.loginlinks10 {
+    text-align: left;
+    padding: 5px 0 10px 0;
+    font-size: 10pt;
+}
+
+    .loginlinks10 .description {
+        visibility: hidden;
+        display: none;
+    }
+
+.visible-p {
+    display: block !important;
+}
+
+table.visible-p {
+    display: table !important;
+}
+
+tr.visible-p {
+    display: table-row !important;
+}
+
+th.visible-p,
+td.visible-p {
+    display: table-cell !important;
+}
+
+.preloginbuttons .row1empty {
+    background-color: #6e6d69;
+    height: 25px;
+    visibility: hidden;
+    display: none;
+}
+
+.preloginbuttons .row2empty {
+    background-color: #85847f;
+    height: 20px;
+    visibility: hidden;
+    display: none;
+}
+
+.preloginbuttons .row3empty {
+    background-color: #9d9c97;
+    height: 15px;
+    visibility: hidden;
+    display: none;
+}
+
+.primaryloginbuttons .row1empty {
+    background-color: #04937f;
+    height: 25px;
+    visibility: hidden;
+    display: none;
+}
+
+.primaryloginbuttons .row2empty {
+    background-color: #006859;
+    height: 20px;
+    visibility: hidden;
+    display: none;
+}
+
+.primaryloginbuttons .row3empty {
+    background-color: #02483e;
+    height: 15px;
+    visibility: hidden;
+    display: none;
+}
+
+.linkform {
+    width: 97%;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #e4e3de;
+}
+
+.slc {
+    visibility: visible;
+    display: block;
+}
+
+.studentlearncenter {
+    visibility: hidden;
+    display: none;
+}
+
+/* ######################## Tablets ######################## */
+@media only screen and (min-width: 768px) {
+    .header-top {
+        height: 20px;
+        width: 100%;
+        background-color: #006859;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-background {
+        /*height: 235px;*/
+        width: 100%;
+        background-color: #04937f;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        margin: 0 auto;
+        padding-left: 15px;
+        max-width: 100%;
+        min-height: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+    }
+
+    .bodycontent {
+        margin: 0 auto;
+        padding: 10px;
+        max-width: 100%;
+        min-height: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        background-color: #fff;
+    }
+
+    .footer {
+        height: 30px;
+        width: 100%;
+        padding: 5px;
+        margin: 0;
+        background-color: #006859;
+        color: #fff;
+        font-size: 7pt;
+    }
+
+    .footercontent .left {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        width: 50%;
+    }
+
+    .footercontent .right {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        text-align: right;
+        width: 40%;
+    }
+
+    .footerbig {
+        visibility: visible;
+        display: inherit;
+    }
+
+    .footersmall {
+        visibility: hidden;
+        display: none;
+    }
+
+    .socialmedia {
+        width: 25px;
+        height: 25px;
+    }
+
+    .primaryimage {
+        visibility: visible;
+        display: inherit;
+    }
+
+    /* 12 column grid */
+    .col-t-1 {
+        width: 8.33%;
+    }
+
+    .col-t-2 {
+        width: 16.66%;
+    }
+
+    .col-t-3 {
+        width: 25%;
+    }
+
+    .col-t-4 {
+        width: 33.33%;
+    }
+
+    .col-t-5 {
+        width: 41.66%;
+    }
+
+    .col-t-6 {
+        width: 50%;
+    }
+
+    .col-t-7 {
+        width: 58.33%;
+    }
+
+    .col-t-8 {
+        width: 66.66%;
+    }
+
+    .col-t-9 {
+        width: 75%;
+    }
+
+    .col-t-10 {
+        width: 83.33%;
+    }
+
+    .col-t-11 {
+        width: 91.66%;
+    }
+
+    .col-t-12 {
+        width: 100%;
+    }
+
+    /* 10 column grid */
+    .col10-t-1 {
+        width: 10%;
+    }
+
+    .col10-t-2 {
+        width: 20%;
+    }
+
+    .col10-t-3 {
+        width: 30%;
+    }
+
+    .col10-t-4 {
+        width: 40%;
+    }
+
+    .col10-t-5 {
+        width: 50%;
+    }
+
+    .col10-t-6 {
+        width: 60%;
+    }
+
+    .col10-t-7 {
+        width: 70%;
+    }
+
+    .col10-t-8 {
+        width: 80%;
+    }
+
+    .col10-t-9 {
+        width: 90%;
+    }
+
+    .col10-t-10 {
+        width: 100%;
+    }
+
+    /* 8 column grid */
+    .col8-t-1 {
+        width: 12.5%;
+    }
+
+    .col8-t-2 {
+        width: 25%;
+    }
+
+    .col8-t-3 {
+        width: 37.5%;
+    }
+
+    .col8-t-4 {
+        width: 50%;
+    }
+
+    .col8-t-5 {
+        width: 62.5%;
+    }
+
+    .col8-t-6 {
+        width: 75%;
+    }
+
+    .col8-t-7 {
+        width: 87.5%;
+    }
+
+    .col8-t-8 {
+        width: 100%;
+    }
+
+    .smalllogo {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+    }
+
+    .logo {
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        margin-left: 10px;
+    }
+
+    .banner {
+        visibility: visible;
+        min-height: 242px;
+        z-index: 0;
+        margin-top: -20px;
+    }
+
+    h1 {
+        font-size: 24px;
+        color: #637a95;
+    }
+    /* blue page title */
+    h2 {
+        font-size: 20px;
+        color: #2b6859;
+    }
+    /* green page sub header */
+    h3 {
+        font-size: 18px;
+        color: #000;
+    }
+    /* black page header */
+    h4 {
+        font-size: 16px;
+        color: #000;
+    }
+
+    h5 {
+        font-size: 10pt;
+        color: #999;
+        margin: 0;
+        padding: 3px 0 5px 0;
+    }
+    /* login link headers*/
+    h6 {
+        font-size: 18px;
+        color: #fff;
+        margin: 0;
+    }
+    /* white page header */
+
+    .bigtitle {
+        font-size: 22px;
+        color: #637a95;
+        font-weight: bold;
+    }
+
+    /*.smalltitle {
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        margin-left: 175px;
+        padding-top: 5px
+    }*/
+
+    .appointmenttitle {
+        font-size: 16px;
+        color: #006859;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .welcome {
+        color: #fff;
+        font-size: 12px;
+        margin-top: 25px;
+        padding: 0 10px 0 0;
+    }
+
+    .loginlinks {
+        width: 200px;
+        text-align: left;
+        border-top: 3px solid #e4e3de;
+        padding: 5px 0 10px 0;
+        font-size: 10pt;
+        height: 200px;
+    }
+
+        .loginlinks .description {
+            font-size: 10pt;
+            visibility: visible;
+            display: inherit;
+        }
+
+        .loginlinks .last {
+            border-bottom: 3px solid #e4e3de;
+        }
+
+    .loginlinks10 {
+        width: 170px;
+        text-align: left;
+        border-top: 3px solid #e4e3de;
+        padding: 5px 0 10px 0;
+        font-size: 10pt;
+        height: 200px;
+    }
+
+        .loginlinks10 .description {
+            font-size: 10pt;
+            visibility: visible;
+            display: inherit;
+        }
+
+        .loginlinks10 .last {
+            border-bottom: 3px solid #e4e3de;
+        }
+
+    .visible-t {
+        display: block !important;
+    }
+
+    table.visible-t {
+        display: table !important;
+    }
+
+    tr.visible-t {
+        display: table-row !important;
+    }
+
+    th.visible-t,
+    td.visible-t {
+        display: table-cell !important;
+    }
+
+    .preloginbuttons .row1empty {
+        background-color: #6e6d69;
+        height: 20px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .preloginbuttons .row2empty {
+        background-color: #85847f;
+        height: 15px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .preloginbuttons .row3empty {
+        background-color: #9d9c97;
+        height: 10px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .primaryloginbuttons .row1empty {
+        background-color: #04937f;
+        height: 20px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .primaryloginbuttons .row2empty {
+        background-color: #006859;
+        height: 15px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .primaryloginbuttons .row3empty {
+        background-color: #02483e;
+        height: 10px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .linkform {
+        width: 50%;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #e4e3de;
+    }
+
+    .slc {
+        visibility: hidden;
+        display: none;
+    }
+
+    .studentlearncenter {
+        visibility: visible;
+        display: block;
+    }
+}
+
+/* ######################## Computers ######################## */
+@media only screen and (min-width: 1000px) {
+    .header-top {
+        height: 20px;
+        width: 100%;
+        background-color: #006859;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-background {
+        height: 65px;
+        width: 100%;
+        background-color: #04937f;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        margin: 0 auto;
+        padding-left: 15px;
+        max-width: 100%;
+        min-height: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+    }
+
+    .bodycontent {
+        margin: 0 auto;
+        padding: 10px 0 10px 0;
+        max-width: 100%; /* update from 1000px;*/
+        min-height: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        background-color: #fff;
+    }
+
+    .footer {
+        height: 50px;
+        width: 100%;
+        padding: 5px;
+        margin: 0;
+        background-color: #006859;
+        color: #fff;
+        font-size: 8pt;
+    }
+
+    .footercontent .left {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        width: 95%;
+    }
+
+    .footercontent .right {
+        float: left;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        text-align: right;
+        width: 40%;
+    }
+
+    .footerbig {
+        visibility: visible;
+        display: inherit;
+    }
+
+    .footersmall {
+        visibility: hidden;
+        display: none;
+    }
+
+    .socialmedia {
+        width: 30px;
+        height: 30px;
+    }
+
+    .primaryimage {
+        visibility: visible;
+        display: inherit;
+    }
+
+    /* 12 column grid */
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+
+    /* 10 column grid */
+    .col10-1 {
+        width: 10%;
+    }
+
+    .col10-2 {
+        width: 20%;
+    }
+
+    .col10-3 {
+        width: 30%;
+    }
+
+    .col10-4 {
+        width: 40%;
+    }
+
+    .col10-5 {
+        width: 50%;
+    }
+
+    .col10-6 {
+        width: 60%;
+    }
+
+    .col10-7 {
+        width: 70%;
+    }
+
+    .col10-8 {
+        width: 80%;
+    }
+
+    .col10-9 {
+        width: 90%;
+    }
+
+    .col10-10 {
+        width: 100%;
+    }
+
+    /* 8 column grid */
+    .col8-1 {
+        width: 12.5%;
+    }
+
+    .col8-2 {
+        width: 25%;
+    }
+
+    .col8-3 {
+        width: 37.5%;
+    }
+
+    .col8-4 {
+        width: 50%;
+    }
+
+    .col8-5 {
+        width: 62.5%;
+    }
+
+    .col8-6 {
+        width: 75%;
+    }
+
+    .col8-7 {
+        width: 87.5%;
+    }
+
+    .col8-8 {
+        width: 100%;
+    }
+
+    .smalllogo {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+    }
+
+    .logo {
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        padding: 0;
+        margin-left: -10px;
+    }
+
+    .welcome {
+        color: #fff;
+        font-size: 12px;
+        margin-top: 25px;
+        padding: 0;
+    }
+
+    .loginlinks {
+        width: 200px;
+        text-align: left;
+        border-top: 3px solid #e4e3de;
+        border-bottom: 3px solid #e4e3de;
+        padding: 5px 0 10px 0;
+        font-size: 10pt;
+    }
+
+        .loginlinks .description {
+            font-size: 10pt;
+            visibility: visible;
+            display: inherit;
+        }
+
+    .loginlinks10 {
+        width: 180px;
+        height: 150px;
+        text-align: left;
+        border-top: 3px solid #e4e3de;
+        border-bottom: 3px solid #e4e3de;
+        padding: 5px 0 10px 0;
+        font-size: 10pt;
+    }
+
+        .loginlinks10 .description {
+            font-size: 10pt;
+            visibility: visible;
+            display: inherit;
+        }
+
+    .visible-c {
+        display: block !important;
+    }
+
+    table.visible-c {
+        display: table !important;
+    }
+
+    tr.visible-c {
+        display: table-row !important;
+    }
+
+    th.visible-c,
+    td.visible-t {
+        display: table-cell !important;
+    }
+
+    .preloginbuttons .row1empty {
+        background-color: #6e6d69;
+        height: 25px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .preloginbuttons .row2empty {
+        background-color: #85847f;
+        height: 20px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .preloginbuttons .row3empty {
+        background-color: #9d9c97;
+        height: 15px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .primaryloginbuttons .row1empty {
+        background-color: #04937f;
+        height: 25px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .primaryloginbuttons .row2empty {
+        background-color: #006859;
+        height: 20px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .primaryloginbuttons .row3empty {
+        background-color: #02483e;
+        height: 15px;
+        visibility: visible;
+        display: inherit;
+    }
+
+    .bigtitle {
+        font-size: 24px;
+        color: #637a95;
+        font-weight: bold;
+    }
+
+    /*.smalltitle {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        margin-left: 175px;
+        padding-top: 5px
+    }*/
+
+    .appointmenttitle {
+        font-size: 18px;
+        color: #006859;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .linkform {
+        width: 50%;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #e4e3de;
+    }
+
+    .slc {
+        visibility: hidden;
+        display: none;
+    }
+
+    .studentlearncenter {
+        visibility: visible;
+        display: block;
+    }
+}
+
+/* ***************************************************************************************************************************************** */
+/* ***************************************** End Page layout break points ****************************************************************** */
+/* ***************************************************************************************************************************************** */
+
+/* login control header */
+.navbar-form {
+    padding: 5px;
+    margin: 0 -5px 0 0;
+    z-index: 999;
+    position: relative;
+}
+
+.form-control {
+    margin: 3px;
+}
+
+.login-form {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: #fdb915;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+/*.btn {
+    display: inline-block;
+    padding: 2px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #cccccc;
+}*/
+
+.closebtn {
+    display: inline-block;
+    padding: 2px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #fdb915;
+}
+
+/* login control main page */
+.navbar-form-main {
+    padding: 5px;
+    margin: 0 -5px 0 0;
+    z-index: 999;
+    position: relative;
+}
+
+.form-control-main {
+    margin: 10px;
+}
+
+.login-form-main {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: #fdb915;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    text-align: right;
+}
+
+.btn-main {
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: #cccccc;
+}
+
+/* *****************Page Fonts And Symbols **************************************************************************************************************** */
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-muted {
+    color: #777;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.text-small {
+    font-size: 9pt;
+    margin-top: 5px;
+}
+
+.text-small-red {
+    font-size: 9pt;
+    margin-top: 5px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+.formlabel {
+    font-weight: bold;
+    font-size: 10pt;
+    padding-top: 15px;
+}
+
+.errortext {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.messageblock {
+    width: 90%;
+    padding: 10px;
+    background-color: #e4e3de;
+    border: 2px solid #637a95;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.pageblock {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background-color: #fff;
+}
+
+.thankyoublock {
+    width: 90%;
+    padding: 20px;
+    background-color: #e4e3de;
+    border: 2px solid #637a95;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.smallblock {
+    padding: 15px;
+    background-color: #cccccc;
+    border: 2px solid #006859;
+    border-radius: 5px;
+    font-size: 10pt;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.badgeyellow {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #eea421;
+    border-radius: 10px;
+}
+
+.badgegrey {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #e4e3de;
+    border-radius: 10px;
+}
+
+.badgewhite {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.badgegreen {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #006859;
+    border-radius: 10px;
+}
+
+    .badgeyellow:empty,
+    .badgegrey:empty,
+    .badgewhite:empty,
+    .badgegreen:empty {
+        display: none;
+    }
+
+.appointmentblock {
+    font-size: 10pt !important;
+    line-height: 12pt;
+    font-family: verdana, arial, sans-serif;
+}
+
+.appointmentcomment {
+    font-size: 9pt !important;
+    font-family: verdana, arial, sans-serif !important;
+}
+
+.appointments {
+    width: 100%;
+    border-top: 1px solid #006859;
+    border-collapse: collapse;
+    margin: 20px 0 20px 0;
+}
+
+.messageterm {
+    background-color: #fdb915;
+    color: #006859;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px 0 5px 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.message-alert {
+    font-weight: bold;
+    color: #ff0000;
+    border-color: #000;
+}
+
+.message-note {
+    font-size: 8pt;
+    background-color: #ffcccc;
+    color: #000;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+    .message-note a {
+        color: red;
+    }
