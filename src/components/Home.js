@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 import Spinner from "react-bootstrap/Spinner"
 import Media from "react-bootstrap/Media"
 import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
 import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
+import dompurify from "dompurify"
 
-const token = ``
-
+const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjE4YWQ3YTlkYWIwMTQ0MjMzOWU3ODMzYzc3Mjk5MmY5NzlhMTUwODEyNTQ2Yzc3NTQ0Y2Q3Mzc2MDhiMzZiZTgwNWE5NzE3ZjYyMWYxNzU3In0.eyJhdWQiOiJCMUtndlhNbEg3cUN4bnM2N0huZ1ZYWnpVT1M0eG1PQTBXa05MemFNb2ZDdFZHeGpBciIsImp0aSI6IjE4YWQ3YTlkYWIwMTQ0MjMzOWU3ODMzYzc3Mjk5MmY5NzlhMTUwODEyNTQ2Yzc3NTQ0Y2Q3Mzc2MDhiMzZiZTgwNWE5NzE3ZjYyMWYxNzU3IiwiaWF0IjoxNTY5MjQyODU0LCJuYmYiOjE1NjkyNDI4NTQsImV4cCI6MTU2OTI0NjQ1NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.QUvH8j0zTXd0MpnQ8ofNkMwCrfX3Tu39f4Bi7KaKSwCZG_w7eELVB3nNmTJ_gMO8xtg_1vSrWVUfupTB0JkIxC5cYpGrxDEGJPKx4ob9qM3MPv4m5ieYQVtAFcVJiDk7x3ZToEo51MbgAsxGHmmn8zWsTHA1MhUwlioAhcFJLxibCi0rxWVmTKefS-xaD5QkM2fr51n-Pb9uGH17_OyJDsuFj_LsTNzbzWio-ZMOjJs_LdkUv5_PbPYFNvmil0D-yN2pI4rQz_XCNuKDpc1hjkmuLUk0cDLMeBremjczzLE-6cWjbt2ccxNhCSeGBGE9OfBqa05crJwOMwzET8fySw`
 const API_URI = "https://api.petfinder.com/v2/animals"
+
+const sanitizer = dompurify.sanitize
+const noImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN0/Q8AAY8BRg2Bt48AAAAASUVORK5CYII="
 
 export class Home extends Component {
   displayName = Home.name
@@ -58,19 +62,24 @@ export class Home extends Component {
   displayAnimals = (animals) => {
     return (
       animals.animals.map(a =>
-        <Col key={a.id}>
+        <Col key={a.id} md={"4"}>
           <Media>
-            <img width={64} height={64} className="mr-3" src={"holder.js/64x64"} />
+            <img width={64} height={64} className="mr-3" src={a.photos[0] ? a.photos[0].small : noImage} alt={"alt"} />
             <Media.Body>
-            
               <h5><a href={a.url} target={"_blank"}>{a.name}</a></h5>
-              <div dangerouslySetInnerHTML={{__html: a.description}} />
+              <sub>{a.breeds.primary}{a.breeds.mixed ? " - Mixed" : null}</sub>
+              <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(sanitizer(a.description)) }} />
             </Media.Body>
           </Media>
-          <hr />
         </Col>
       )
     )
+  }
+
+  htmlDecode(input) {
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
   }
 
   render() {
@@ -79,10 +88,8 @@ export class Home extends Component {
       animalsLoading
     } = this.state
 
-    console.log(animalsLoading)
-
     let renderAnimals = animalsLoading ?
-      <Spinner animation={"border"} variant={"info"} role="status"><span className="sr-only">Loading...</span></Spinner> :
+      <Spinner animation={"border"} role="status"><span className="sr-only">Loading...</span></Spinner> :
       this.displayAnimals(animals)
 
     return (
@@ -91,9 +98,12 @@ export class Home extends Component {
           position="top-right" autoClose={2000} hideProgressBar={true} newestOnTop={false}
           closeOnClick rtl={false} pauseOnVisibilityChange draggable pauseOnHover
         />
-        <h1>PETS</h1>
+        <h1>Dogs</h1>
         <hr />
-        {renderAnimals}
+
+        <Row>{renderAnimals}</Row>
+
+        <hr />
       </>
     )
   }
