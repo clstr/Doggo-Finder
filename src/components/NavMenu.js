@@ -8,12 +8,24 @@ import Navbar from 'react-bootstrap/Navbar';
 export class NavMenu extends Component {
   displayName = NavMenu.name
 
+  constructor(props) {
+    super(props);
+    this.state = this.getInitialState()
+  }
+
+  getInitialState = () => {
+    const initialState = {}
+    return initialState
+  }
+
+  resetState = () => { this.setState(this.getInitialState()) }
+
   render() {
     return (
-      <Navbar collapseOnSelect fixed={"top"} sticky={"top"} expand="md" bg={"light"} variant={"light"}>
+      <Navbar collapseOnSelect fixed={"top"} sticky={"top"} expand="md" bg={"dark"} variant={"dark"}>
 
         <Navbar.Brand>
-          <Link to={'/'}>Guided Pathways</Link>
+          <Link to={'/'}>ReactJS Site</Link>
         </Navbar.Brand>
 
         <Navbar.Toggle />
@@ -30,6 +42,6 @@ export class NavMenu extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    );
+    )
   }
 }

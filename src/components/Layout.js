@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { Header } from "./Header"
 import { Footer } from "./Footer";
 
 export class Layout extends Component {
   displayName = Layout.name
 
+  constructor(props) {
+    super(props);
+    this.state = this.getInitialState()
+  }
+
+  getInitialState = () => {
+    const initialState = {}
+    return initialState
+  }
+
+  resetState = () => { this.setState(this.getInitialState()) }
+
   render() {
     return (
-      <Container fluid>
+      <React.Fragment>
         <Header />
-
-        <div className="bodycontent">
-          <Row>
-            <Col sm={12}> {this.props.children} </Col>
-          </Row>
-        </div>
-
+        <Container>
+          {this.props.children}
+        </Container>
         <Footer />
-      </Container >
-    );
+      </React.Fragment>
+    )
   }
 }
