@@ -130,7 +130,7 @@ export class Home extends Component {
       animals.animals.map(pet =>
         <Col key={pet.id} md={"5"} className="shadow p-3 mb-5 mr-auto ml-auto bg-white rounded">
           <Media>
-            <img width={100} height={100} className="mr-3 rounded-circle" src={pet.photos[0] ? pet.photos[0].large : noImage} alt={"Doggo"}/>
+            <img width={100} height={100} className="mr-3 rounded-circle" src={pet.photos[0] ? pet.photos[0].large : noImage} alt={"Doggo"} />
             <Media.Body>
               <h5><a href={pet.url} target={"_blank"} className={"text-decoration-none"}>{pet.name}</a></h5>
               <Badge pill variant="light">{pet.breeds.primary}</Badge>
@@ -142,7 +142,6 @@ export class Home extends Component {
               <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(pet.description) }} />
             </Media.Body>
           </Media>
-          
         </Col>
       )
     )
@@ -176,7 +175,11 @@ export class Home extends Component {
           position="top-right" autoClose={2000} hideProgressBar={true} newestOnTop={false}
           closeOnClick rtl={false} pauseOnVisibilityChange draggable pauseOnHover
         />
-        <h1 className={"text-center"}>Dogs</h1>
+        <h1 className={"text-center"}>
+          <span role="img" aria-label="hotdog">🌭</span>
+          <span role="img" aria-label="dog">🐕</span>
+          <span role="img" aria-label="dogface">🐶</span>
+          Dogs for adoption</h1>
         <hr />
 
         <Row>{renderAnimals}</Row>
@@ -184,7 +187,7 @@ export class Home extends Component {
         <hr />
         {!animalsLoading && <Badge variant="dark">Page # {animals.pagination.current_page}</Badge>}
         {renderLoadMorePetsButton}
-        <div className={"mb-5"}/>
+        <div className={"mb-5"} />
       </>
     )
   }
