@@ -246,7 +246,7 @@ export class Home extends Component {
             <Form onSubmit={this.handleCredentials}>
               <Form.Group controlId="AuthFormUsername">
                 <Form.Label>API Key</Form.Label>
-                <Form.Control size="lg" type="username" placeholder="API Key" autoFocus required />
+                <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
                 <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"}>Petfinder API Documentation</a></Form.Text>
               </Form.Group>
 
@@ -297,8 +297,8 @@ export class Home extends Component {
         {
           !animalsLoading &&
             <ButtonToolbar>
-              <Button className={"mr-1"} variant="outline-dark" onClick={this.fetchPreviousPage.bind(this, animals.pagination, false)} >Back</Button>
-              <Button className={"mr-1"} variant="outline-dark" onClick={this.fetchNextPage.bind(this, animals.pagination, true)} >Load more furry friends</Button>
+              <Button disabled={animals.pagination.current_page === 1} className={"mr-1"} variant="outline-dark" onClick={this.fetchPreviousPage.bind(this, animals.pagination, false)} >Back</Button>
+              <Button disabled={animals.pagination.current_page === animals.pagination.total_pages}className={"mr-1"} variant="outline-dark" onClick={this.fetchNextPage.bind(this, animals.pagination, true)} >Load more furry friends</Button>
             </ButtonToolbar>
         }
 
