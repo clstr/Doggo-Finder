@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-
-import Spinner from "react-bootstrap/Spinner"
+//import Spinner from "react-bootstrap/Spinner"
 import Media from "react-bootstrap/Media"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import ButtonToolbar from "react-bootstrap/ButtonToolbar"
+import Form from "react-bootstrap/Form"
 import Badge from "react-bootstrap/Badge"
-
-import Moment from 'react-moment'
+import Spinner from "react-bootstrap/Spinner"
+import moment from "moment/moment"
 import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
 
-const token = ``
 const API_URI = "https://api.petfinder.com"
-
 const noImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN0/Q8AAY8BRg2Bt48AAAAASUVORK5CYII="
 
 export class Home extends Component {
@@ -23,69 +21,99 @@ export class Home extends Component {
   constructor(props) {
     super(props)
     this.state = this.getInitialState()
+    this.handleCredentials = this.handleCredentials.bind(this)
+
   }
 
   getInitialState = () => {
     const initialState = {
+      auth: [],
+      authLoading: true,
       animals: [],
-      animalsLoading: true
+      animalsLoading: true,
+      isAuthenticated: false
     }
     return initialState
   }
 
   resetState = () => { this.setState(this.getInitialState()) }
 
-  async componentDidMount() {
-    try {
-      const config = {
+  async AsyncAuthenticationResponse(apikey, apisecret) {
+    return await axios.post(`${API_URI}/v2/oauth2/token`, {
+      grant_type: "client_credentials",
+      client_id: apikey,
+      client_secret: apisecret
+    })
+  }
+
+  async AsyncGetAnimals(auth, query) {
+    return await axios.get(`${API_URI}${query}`,
+      {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${auth.access_token}`
         }
-      }
-      const AsyncAnimalsResponse = await axios.get(`${API_URI}/v2/animals?type=dog&status=adoptable&location=33436`, config)
-      const isAnimalsResponseOK = AsyncAnimalsResponse && AsyncAnimalsResponse.status === 200
+      })
+  }
 
-      if (isAnimalsResponseOK) {
+  async componentDidMount() {
+    const auth = {
+      token_type: localStorage.getItem("token_type"),
+      expires_in: localStorage.getItem("expires_in"),
+      access_token: localStorage.getItem("access_token")
+    }
+
+    const token_last_generated = localStorage.getItem("token_last_generated")
+    const tokenExpires = moment().add(auth.expires_in, 'seconds')
+    const timeNow = moment().format()
+
+    console.log("token was last generated: " + moment(token_last_generated).format('MMMM Do YYYY, h:mm:ss a'))
+    console.log("token expires: " + tokenExpires.format('MMMM Do YYYY, h:mm:ss a'))
+
+    // Check if the date/time is still before the expiration
+    if (token_last_generated !== null && moment(timeNow).isBefore(tokenExpires)) {
+      this.setState({
+        auth: auth,
+        isAuthenticated: true
+      })
+
+      //
+      // Call our doggos, we might want to eventually move this so we can pick from options since we are logged on.
+      //
+      const AsyncGetAnimals = await this.AsyncGetAnimals(auth, "/v2/animals?type=dog&status=adoptable&location=33436")
+      const isGetAnimalsOK = AsyncGetAnimals && AsyncGetAnimals.status === 200
+
+      if (isGetAnimalsOK) {
         this.setState({
-          animals: await AsyncAnimalsResponse.data,
-          animalsLoading: false
+          animals: await AsyncGetAnimals.data,
+          animalsLoading: false,
         })
-      }
 
-      if (isAnimalsResponseOK) {
         toast.success("Fetched Animal Data 🐶")
         console.info(this.state.animals)
       }
-
-    } catch (err) {
-      toast.error(err.message)
-      console.error("we fucked up")
     }
+
   }
 
   async fetchNextPage(pagination) {
-    this.resetState()
-    try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-      const AsyncAnimalsResponse = await axios.get(`${API_URI}${pagination._links.next.href}`, config)
-      const isAnimalsResponseOK = AsyncAnimalsResponse && AsyncAnimalsResponse.status === 200
+    this.setState({
+      animals: [],
+      animalsLoading: true
+    })
 
-      if (isAnimalsResponseOK) {
+    try {
+      const AsyncGetAnimals = await this.AsyncGetAnimals(this.state.auth, pagination._links.next.href)
+      const isGetAnimalsOK = AsyncGetAnimals && AsyncGetAnimals.status === 200
+
+      if (isGetAnimalsOK) {
         this.setState({
-          animals: await AsyncAnimalsResponse.data,
+          animals: await AsyncGetAnimals.data,
           animalsLoading: false
         })
-      }
 
-      if (isAnimalsResponseOK) {
         toast.success("Fetched Animal Data 🐶")
         console.info(this.state.animals)
       }
-
     } catch (err) {
       toast.error(err.message)
       console.error("we fucked up")
@@ -97,32 +125,73 @@ export class Home extends Component {
       toast.info("Already on first page")
     } else {
       try {
-        this.resetState()
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-        const AsyncAnimalsResponse = await axios.get(`${API_URI}/v2/animals?type=dog&status=adoptable&location=33436&page=${pagination.current_page - 1}`, config)
-        const isAnimalsResponseOK = AsyncAnimalsResponse && AsyncAnimalsResponse.status === 200
+        this.setState({
+          animals: [],
+          animalsLoading: true
+        })
 
-        if (isAnimalsResponseOK) {
+        const AsyncGetAnimals = await this.AsyncGetAnimals(this.state.auth, `/v2/animals?type=dog&status=adoptable&location=33436&page=${pagination.current_page - 1}`)
+        const isGetAnimalsOK = AsyncGetAnimals && AsyncGetAnimals.status === 200
+
+        if (isGetAnimalsOK) {
           this.setState({
-            animals: await AsyncAnimalsResponse.data,
+            animals: await AsyncGetAnimals.data,
             animalsLoading: false
           })
-        }
 
-        if (isAnimalsResponseOK) {
           toast.success("Fetched Animal Data 🐶")
           console.info(this.state.animals)
         }
-
       } catch (err) {
         toast.error(err.message)
         console.error("we fucked up")
       }
     }
+  }
+
+  async handleCredentials(event) {
+    event.preventDefault();
+
+    const apikey = event.target.elements.AuthFormUsername.value
+    const apisecret = event.target.elements.AuthFormPassword.value
+    try {
+      const AsyncAuthenticationResponse = await this.AsyncAuthenticationResponse(apikey, apisecret)
+      const isAuthenticationResponseOK = AsyncAuthenticationResponse && AsyncAuthenticationResponse.status === 200
+
+      if (isAuthenticationResponseOK) {
+        this.setState({
+          auth: await AsyncAuthenticationResponse.data,
+          authLoading: false,
+          isAuthenticated: true
+        })
+
+        //Store token details in userSession
+        localStorage.setItem("token_type", this.state.auth.token_type)
+        localStorage.setItem("expires_in", this.state.auth.expires_in)
+        localStorage.setItem("access_token", this.state.auth.access_token)
+        localStorage.setItem("token_last_generated", moment().format())
+      }
+
+      //
+      // Call our doggos, we might want to eventually move this so we can pick from options since we are logged on.
+      //
+      const AsyncGetAnimals = await this.AsyncGetAnimals(this.state.auth, "/v2/animals?type=dog&status=adoptable&location=33436")
+      const isGetAnimalsOK = AsyncGetAnimals && AsyncGetAnimals.status === 200
+
+      if (isGetAnimalsOK) {
+        this.setState({
+          animals: await AsyncGetAnimals.data,
+          animalsLoading: false,
+        })
+
+        toast.success("Fetched Animal Data 🐶")
+        console.info(this.state.animals)
+      }
+    } catch (err) {
+      toast.error(err.message)
+      console.error("we fucked up")
+    }
+
   }
 
   displayAnimals = (animals) => {
@@ -136,7 +205,8 @@ export class Home extends Component {
               <Badge pill variant="light">{pet.breeds.primary}</Badge>
               <Badge pill variant="light">{pet.breeds.secondary}</Badge>
               <Badge pill variant="light">{pet.breeds.mixed ? "Mixed" : null}</Badge>
-              <Badge pill variant="light"><Moment date={pet.published_at} format={"MM/DD/YYYY hh:MM A"} /></Badge>
+              <Badge pill variant="light">{moment(pet.published_at).format("MM/DD/YYYY hh:MM A")}</Badge>
+              <Badge pill variant="light">{pet.gender}</Badge>
               <Badge pill variant="light">{pet.age}</Badge>
               <Badge pill variant="light">{pet.organization_id}</Badge>
               <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(pet.description) }} />
@@ -147,6 +217,11 @@ export class Home extends Component {
     )
   }
 
+  Logoff() {
+    localStorage.clear()
+    this.resetState()
+  }
+
   htmlDecode(input) {
     var e = document.createElement('div');
     e.innerHTML = input;
@@ -155,19 +230,11 @@ export class Home extends Component {
 
   render() {
     const {
+      auth,
       animals,
-      animalsLoading
+      animalsLoading,
+      isAuthenticated
     } = this.state
-
-    let renderAnimals = animalsLoading ?
-      <Spinner animation={"border"} role="status"><span className="sr-only">Loading...</span></Spinner> :
-      this.displayAnimals(animals)
-
-    let renderLoadMorePetsButton = animalsLoading ? null :
-      <ButtonToolbar>
-        <Button className={"mr-1"} variant="outline-dark" onClick={this.fetchPreviousPage.bind(this, animals.pagination, false)} >Back</Button>
-        <Button className={"mr-1"} variant="outline-dark" onClick={this.fetchNextPage.bind(this, animals.pagination, true)} >Load more furry friends</Button>
-      </ButtonToolbar>
 
     return (
       <>
@@ -175,19 +242,77 @@ export class Home extends Component {
           position="top-right" autoClose={2000} hideProgressBar={true} newestOnTop={false}
           closeOnClick rtl={false} pauseOnVisibilityChange draggable pauseOnHover
         />
-        <h1 className={"text-center"}>
-          <span role="img" aria-label="hotdog">🌭</span>
-          <span role="img" aria-label="dog">🐕</span>
-          <span role="img" aria-label="dogface">🐶</span>
-          Dogs for adoption</h1>
-        <hr />
+        {
+          !isAuthenticated &&
+          <div className={"mt-3"}>
+            <Form onSubmit={this.handleCredentials}>
+              <Form.Group controlId="AuthFormUsername">
+                <Form.Label>API Key</Form.Label>
+                <Form.Control size="lg" type="username" placeholder="API Key" autoFocus required />
+                <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"}>Petfinder API Documentation</a></Form.Text>
+              </Form.Group>
 
-        <Row>{renderAnimals}</Row>
+              <Form.Group controlId="AuthFormPassword">
+                <Form.Label>API Secret</Form.Label>
+                <Form.Control size="lg" type="password" placeholder="API Secret" required />
+              </Form.Group>
 
-        <hr />
-        {!animalsLoading && <Badge variant="dark">Page # {animals.pagination.current_page}</Badge>}
-        {renderLoadMorePetsButton}
+              <Button size={"lg"} variant="dark" type="submit">Submit</Button>
+            </Form>
+          </div>
+        }
+
+        {
+          isAuthenticated && <Badge pill variant="success">Authenticated</Badge>
+        }
+
+        {
+          !animalsLoading &&
+          <React.Fragment>
+            <h1 className={"text-center"}>
+              <span role="img" aria-label="hotdog">🌭</span>
+              <span role="img" aria-label="dog">🐕</span>
+              <span role="img" aria-label="dogface">🐶</span>
+              Dogs for adoption</h1>
+            <hr />
+          </React.Fragment>
+        }
+
+        {
+          isAuthenticated && animalsLoading &&
+          <div>
+            <Spinner animation={"border"} role="status"><span className="sr-only">Loading...</span></Spinner>
+            <h2>Loading doggos</h2>
+          </div>
+        }
+
+        <Row>{!animalsLoading && this.displayAnimals(animals)}</Row>
+
+        {
+          !animalsLoading &&
+          <React.Fragment>
+            <hr />
+            <Badge variant="dark">Page # {animals.pagination.current_page}</Badge>
+          </React.Fragment>
+        }
+
+        {
+          !animalsLoading &&
+            <ButtonToolbar>
+              <Button className={"mr-1"} variant="outline-dark" onClick={this.fetchPreviousPage.bind(this, animals.pagination, false)} >Back</Button>
+              <Button className={"mr-1"} variant="outline-dark" onClick={this.fetchNextPage.bind(this, animals.pagination, true)} >Load more furry friends</Button>
+            </ButtonToolbar>
+        }
+
+        {
+          !animalsLoading && <p>Token expires in {auth.expires_in} seconds</p>
+        }
+
+        {
+          isAuthenticated && !animalsLoading && <Button onClick={this.Logoff.bind(this)} variant={"outline-danger"}>Log Off</Button>
+        }
         <div className={"mb-5"} />
+
       </>
     )
   }
