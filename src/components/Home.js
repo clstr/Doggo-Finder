@@ -11,6 +11,8 @@ import moment from "moment/moment"
 import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
 
+import "../CSS/login.css"
+
 const API_URI = "https://api.petfinder.com"
 const noImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN0/Q8AAY8BRg2Bt48AAAAASUVORK5CYII="
 
@@ -242,8 +244,9 @@ export class Home extends Component {
         />
         {
           !isAuthenticated &&
-          <div className={"mt-3"}>
-            <Form onSubmit={this.handleCredentials}>
+            <Form onSubmit={this.handleCredentials} className={"form-signin text-center"}>
+              <p style={{fontSize: "72px"}} ><span role="img" aria-label="dogface">🐶</span></p>
+              <h1>Doggo Finder</h1>
               <Form.Group controlId="AuthFormUsername">
                 <Form.Label>API Key</Form.Label>
                 <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
@@ -255,9 +258,9 @@ export class Home extends Component {
                 <Form.Control size="lg" type="password" placeholder="API Secret" required />
               </Form.Group>
 
-              <Button size={"lg"} variant="dark" type="submit">Submit</Button>
+              <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
+              <p class="mt-5 mb-3 text-muted"><a href={"https://sergiop.dev"} target={"_blank"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"}>Petfinder</a></p>
             </Form>
-          </div>
         }
 
         {
