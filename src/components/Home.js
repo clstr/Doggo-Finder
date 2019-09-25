@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import Spinner from "react-bootstrap/Spinner"
 import Media from "react-bootstrap/Media"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
@@ -22,7 +21,6 @@ export class Home extends Component {
     super(props)
     this.state = this.getInitialState()
     this.handleCredentials = this.handleCredentials.bind(this)
-
   }
 
   getInitialState = () => {
@@ -312,7 +310,6 @@ export class Home extends Component {
           isAuthenticated && !animalsLoading && <Button onClick={this.Logoff.bind(this)} variant={"outline-danger"}>Log Off</Button>
         }
         <div className={"mb-5"} />
-
       </>
     )
   }
