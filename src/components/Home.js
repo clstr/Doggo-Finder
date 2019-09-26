@@ -62,15 +62,15 @@ export class Home extends Component {
       access_token: localStorage.getItem("access_token")
     }
 
-    const token_last_generated = localStorage.getItem("token_last_generated")
-    const tokenExpires = moment().add(auth.expires_in, 'seconds')
+    const time_token_last_generated = localStorage.getItem("token_last_generated")
+    const tokenExpires = moment(time_token_last_generated).add(auth.expires_in, 'seconds')
     const timeNow = moment().format()
 
-    console.log("token was last generated: " + moment(token_last_generated).format('MMMM Do YYYY, h:mm:ss a'))
+    console.log("token was last generated: " + moment(time_token_last_generated).format('MMMM Do YYYY, h:mm:ss a'))
     console.log("token expires: " + tokenExpires.format('MMMM Do YYYY, h:mm:ss a'))
 
     // Check if the date/time is still before the expiration
-    if (token_last_generated !== null && moment(timeNow).isBefore(tokenExpires)) {
+    if (time_token_last_generated !== null && !moment(timeNow).isAfter(tokenExpires) ) {
       this.setState({
         auth: auth,
         isAuthenticated: true
@@ -92,7 +92,6 @@ export class Home extends Component {
         console.info(this.state.animals)
       }
     }
-
   }
 
   async fetchNextPage(pagination) {
@@ -259,7 +258,7 @@ export class Home extends Component {
               </Form.Group>
 
               <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
-              <p class="mt-5 mb-3 text-muted"><a href={"https://sergiop.dev"} target={"_blank"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"}>Petfinder</a></p>
+              <p className="mt-5 mb-3 text-muted"><a href={"https://sergiop.dev"} target={"_blank"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"}>Petfinder</a></p>
             </Form>
         }
 
