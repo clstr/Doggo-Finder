@@ -70,7 +70,7 @@ export class Home extends Component {
     console.log("token expires: " + tokenExpires.format('MMMM Do YYYY, h:mm:ss a'))
 
     // Check if the date/time is still before the expiration
-    if (time_token_last_generated !== null && !moment(timeNow).isAfter(tokenExpires) ) {
+    if (time_token_last_generated !== null && !moment(timeNow).isAfter(tokenExpires)) {
       this.setState({
         auth: auth,
         isAuthenticated: true
@@ -243,23 +243,25 @@ export class Home extends Component {
         />
         {
           !isAuthenticated &&
-            <Form onSubmit={this.handleCredentials} className={"form-signin text-center"}>
-              <p style={{fontSize: "72px"}} ><span role="img" aria-label="dogface">🐶</span></p>
-              <h1>Doggo Finder</h1>
-              <Form.Group controlId="AuthFormUsername">
-                <Form.Label>API Key</Form.Label>
-                <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
-                <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"} rel={"noreferrer"}>Petfinder API Documentation</a></Form.Text>
-              </Form.Group>
+          <Form onSubmit={this.handleCredentials} className={"form-signin text-center"}>
+            <p style={{ fontSize: "72px" }} ><span role="img" aria-label="dogface">🐶</span></p>
+            <h1>Doggo Finder</h1>
+            <Form.Group controlId="AuthFormUsername">
+              <Form.Label>API Key</Form.Label>
+              <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
+              <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"} rel={"noreferrer"}>Petfinder API Documentation</a></Form.Text>
+            </Form.Group>
 
-              <Form.Group controlId="AuthFormPassword">
-                <Form.Label>API Secret</Form.Label>
-                <Form.Control size="lg" type="password" placeholder="API Secret" required />
-              </Form.Group>
+            <Form.Group controlId="AuthFormPassword">
+              <Form.Label>API Secret</Form.Label>
+              <Form.Control size="lg" type="password" placeholder="API Secret" required />
+            </Form.Group>
 
-              <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
-              <p className="mt-5 mb-3 text-muted"><a href={"https://sergiop.dev"} target={"_blank"} rel={"noreferrer"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"}>Petfinder</a></p>
-            </Form>
+            <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
+            <p className="mt-5 mb-3 text-muted">
+              <a href={"https://sergiop.dev"} target={"_blank"} rel={"noreferrer"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"} rel={"noreferrer"}>Petfinder</a>
+            </p>
+          </Form>
         }
 
         {
@@ -298,10 +300,10 @@ export class Home extends Component {
 
         {
           !animalsLoading &&
-            <ButtonToolbar>
-              <Button disabled={animals.pagination.current_page === 1} className={"mr-1"} variant="outline-dark" onClick={this.fetchPreviousPage.bind(this, animals.pagination, false)} >Back</Button>
-              <Button disabled={animals.pagination.current_page === animals.pagination.total_pages}className={"mr-1"} variant="outline-dark" onClick={this.fetchNextPage.bind(this, animals.pagination, true)} >Load more furry friends</Button>
-            </ButtonToolbar>
+          <ButtonToolbar>
+            <Button disabled={animals.pagination.current_page === 1} className={"mr-1"} variant="outline-dark" onClick={this.fetchPreviousPage.bind(this, animals.pagination, false)} >Back</Button>
+            <Button disabled={animals.pagination.current_page === animals.pagination.total_pages} className={"mr-1"} variant="outline-dark" onClick={this.fetchNextPage.bind(this, animals.pagination, true)} >Load more furry friends</Button>
+          </ButtonToolbar>
         }
 
         {
