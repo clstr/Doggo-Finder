@@ -249,7 +249,7 @@ export class Home extends Component {
               <Form.Group controlId="AuthFormUsername">
                 <Form.Label>API Key</Form.Label>
                 <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
-                <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"}>Petfinder API Documentation</a></Form.Text>
+                <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"} rel={"noreferrer"}>Petfinder API Documentation</a></Form.Text>
               </Form.Group>
 
               <Form.Group controlId="AuthFormPassword">
@@ -258,7 +258,7 @@ export class Home extends Component {
               </Form.Group>
 
               <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
-              <p className="mt-5 mb-3 text-muted"><a href={"https://sergiop.dev"} target={"_blank"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"}>Petfinder</a></p>
+              <p className="mt-5 mb-3 text-muted"><a href={"https://sergiop.dev"} target={"_blank"} rel={"noreferrer"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"}>Petfinder</a></p>
             </Form>
         }
 
