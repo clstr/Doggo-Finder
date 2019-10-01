@@ -200,7 +200,7 @@ export class Home extends Component {
           <Media>
             <img width={100} height={100} className="mr-3 rounded-circle" src={pet.photos[0] ? pet.photos[0].large : noImage} alt={"Doggo"} />
             <Media.Body>
-              <h5><a href={pet.url} target={"_blank"} className={"text-decoration-none"}>{pet.name}</a></h5>
+              <h5><a href={pet.url} target={"_blank"} className={"text-decoration-none"} rel={"noreferrer noopener"}>{pet.name}</a></h5>
               <Badge pill variant="light">{pet.breeds.primary}</Badge>
               <Badge pill variant="light">{pet.breeds.secondary}</Badge>
               <Badge pill variant="light">{pet.breeds.mixed ? "Mixed" : null}</Badge>
@@ -249,7 +249,7 @@ export class Home extends Component {
             <Form.Group controlId="AuthFormUsername">
               <Form.Label>API Key</Form.Label>
               <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
-              <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"} rel={"noreferrer"}>Petfinder API Documentation</a></Form.Text>
+              <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"} rel={"noreferrer noopener"}>Petfinder API Documentation</a></Form.Text>
             </Form.Group>
 
             <Form.Group controlId="AuthFormPassword">
@@ -259,7 +259,7 @@ export class Home extends Component {
 
             <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
             <p className="mt-5 mb-3 text-muted">
-              <a href={"https://sergiop.dev"} target={"_blank"} rel={"noreferrer"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"} rel={"noreferrer"}>Petfinder</a>
+              <a href={"https://sergiop.dev"} target={"_blank"} rel={"noreferrer noopener"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"} rel={"noreferrer noopener"}>Petfinder</a>
             </p>
           </Form>
         }
