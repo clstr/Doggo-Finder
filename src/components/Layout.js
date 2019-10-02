@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container'
 import { Header } from "./Header"
 import { Footer } from "./Footer";
@@ -30,3 +31,7 @@ export class Layout extends Component {
     )
   }
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
+};
