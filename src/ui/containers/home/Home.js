@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import Media from "react-bootstrap/Media"
-import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import ButtonToolbar from "react-bootstrap/ButtonToolbar"
-import Form from "react-bootstrap/Form"
+
 import Badge from "react-bootstrap/Badge"
 import Spinner from "react-bootstrap/Spinner"
 import moment from "moment/moment"
 import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
 
-import "../CSS/login.css"
+import DisplayAnimals from "../../../components/displayAnimals/displayAnimals"
+import Login from "../login/login"
+import { API_URI } from "../../utils/consts"
 
-const API_URI = "https://api.petfinder.com"
-const noImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN0/Q8AAY8BRg2Bt48AAAAASUVORK5CYII="
 
 export class Home extends Component {
   displayName = Home.name
@@ -193,38 +191,9 @@ export class Home extends Component {
 
   }
 
-  displayAnimals = (animals) => {
-    return (
-      animals.animals.map(pet =>
-        <Col key={pet.id} md={"5"} className="shadow p-3 mb-5 mr-auto ml-auto bg-white rounded">
-          <Media>
-            <img width={100} height={100} className="mr-3 rounded-circle" src={pet.photos[0] ? pet.photos[0].large : noImage} alt={"Doggo"} />
-            <Media.Body>
-              <h5><a href={pet.url} target={"_blank"} className={"text-decoration-none"} rel={"noreferrer noopener"}>{pet.name}</a></h5>
-              <Badge pill variant="light">{pet.breeds.primary}</Badge>
-              <Badge pill variant="light">{pet.breeds.secondary}</Badge>
-              <Badge pill variant="light">{pet.breeds.mixed ? "Mixed" : null}</Badge>
-              <Badge pill variant="light">{moment(pet.published_at).format("MM/DD/YYYY hh:MM A")}</Badge>
-              <Badge pill variant="light">{pet.gender}</Badge>
-              <Badge pill variant="light">{pet.age}</Badge>
-              <Badge pill variant="light">{pet.organization_id}</Badge>
-              <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(pet.description) }} />
-            </Media.Body>
-          </Media>
-        </Col>
-      )
-    )
-  }
-
   Logoff() {
     localStorage.clear()
     this.resetState()
-  }
-
-  htmlDecode(input) {
-    var e = document.createElement('div');
-    e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
   }
 
   render() {
@@ -241,27 +210,9 @@ export class Home extends Component {
           position="top-right" autoClose={2000} hideProgressBar={true} newestOnTop={false}
           closeOnClick rtl={false} pauseOnVisibilityChange draggable pauseOnHover
         />
+
         {
-          !isAuthenticated &&
-          <Form onSubmit={this.handleCredentials} className={"form-signin text-center"}>
-            <p style={{ fontSize: "72px" }} ><span role="img" aria-label="dogface">🐶</span></p>
-            <h1>Doggo Finder</h1>
-            <Form.Group controlId="AuthFormUsername">
-              <Form.Label>API Key</Form.Label>
-              <Form.Control size="lg" type="text" placeholder="API Key" autoFocus required />
-              <Form.Text className="text-muted"><a href={"https://www.petfinder.com/developers/v2/docs/"} target={"_blank"} rel={"noreferrer noopener"}>Petfinder API Documentation</a></Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="AuthFormPassword">
-              <Form.Label>API Secret</Form.Label>
-              <Form.Control size="lg" type="password" placeholder="API Secret" required />
-            </Form.Group>
-
-            <Button size={"lg"} variant="dark" type="submit" className={"btn-block"}>Authenticate</Button>
-            <p className="mt-5 mb-3 text-muted">
-              <a href={"https://sergiop.dev"} target={"_blank"} rel={"noreferrer noopener"}>Sergio Palomino</a> | API by <a href={"http://petfinder.com"} target={"_blank"} rel={"noreferrer noopener"}>Petfinder</a>
-            </p>
-          </Form>
+          !isAuthenticated && <Login handleCredentials={this.handleCredentials}/>
         }
 
         {
@@ -288,7 +239,7 @@ export class Home extends Component {
           </div>
         }
 
-        <Row>{!animalsLoading && this.displayAnimals(animals)}</Row>
+        <Row>{ !animalsLoading && <DisplayAnimals animals={animals}/> }</Row>
 
         {
           !animalsLoading &&

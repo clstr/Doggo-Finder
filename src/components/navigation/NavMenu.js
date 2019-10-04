@@ -23,22 +23,15 @@ export class NavMenu extends Component {
   render() {
     return (
       <Navbar collapseOnSelect fixed={"top"} sticky={"top"} expand="md" bg={"dark"} variant={"dark"}>
-
         <Navbar.Brand>
           <Link to={'/'}>ReactJS Site</Link>
         </Navbar.Brand>
-
         <Navbar.Toggle />
-
         <Navbar.Collapse>
           <Nav>
-
             <LinkContainer to={'/'} exact>
-              <Nav.Link>
-                Home
-              </Nav.Link>
+              <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-
           </Nav>
         </Navbar.Collapse>
       </Navbar>

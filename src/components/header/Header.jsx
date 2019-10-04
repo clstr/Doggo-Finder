@@ -1,5 +1,5 @@
 ﻿import React, { Component } from "react";
-import { NavMenu } from "./NavMenu";
+import { NavMenu } from "../navigation/NavMenu";
 
 export class Header extends Component {
   displayName = Header.name;

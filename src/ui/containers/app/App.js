@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import { Layout } from '../../Layout';
+import { Home } from '../home/Home';
 
 export default class App extends Component {
   displayName = App.name
